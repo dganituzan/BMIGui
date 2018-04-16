@@ -1,6 +1,9 @@
 import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.io.*;
 import java.awt.*;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -16,6 +19,7 @@ public class ViewBMI extends JFrame {
 	JPanel pWeight = new JPanel();
 	JPanel pAge = new JPanel(); 
 	JPanel pExe = new JPanel();
+	JPanel pCal = new JPanel();
 	JRadioButton female;
 	JRadioButton male;
 	JLabel heightL;
@@ -28,13 +32,22 @@ public class ViewBMI extends JFrame {
 	JRadioButton Inactive;
 	JRadioButton Moderately;
 	JRadioButton Extremely;
+	BufferedImage background;
 
 
 	public ViewBMI() {
+
 		/*
 		 * Titles
 		 */
 		super("BMI Calculation");
+
+		/*try {
+			this.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("///C:/Users/Dganit%20Uzan/git/BMIGui/BMIGui/src/BMI%20background.jpg")))));	
+		}
+		catch(IOException e) {
+			System.out.println("no image found");
+	}*/
 
 		JLabel title = new JLabel("<HTML><U>BMI CALCULATOR  </U></HTML>");
 		title.setForeground(Color.DARK_GRAY);
@@ -128,6 +141,13 @@ public class ViewBMI extends JFrame {
 		pExe.add(Inactive);
 		pExe.add(Moderately);
 		pExe.add(Extremely);
+		/*
+		 * Calculate Button.		
+		 */
+		pCal.setBounds(0,380,450,40);
+		JButton calculateB = new JButton("Calculate");
+		pCal.add(calculateB);
+
 
 		/*
 		 * Adding all Panels into the frame.		
@@ -139,6 +159,7 @@ public class ViewBMI extends JFrame {
 		this.getContentPane().add(pWeight);
 		this.getContentPane().add(pAge);
 		this.getContentPane().add(pExe);
+		this.getContentPane().add(pCal);
 		setLayout(null);
 		setSize(500,600);
 		setResizable(true);
@@ -158,4 +179,5 @@ public class ViewBMI extends JFrame {
 		}
 
 	}
+
 }
