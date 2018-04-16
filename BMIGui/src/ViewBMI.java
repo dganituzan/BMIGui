@@ -8,6 +8,7 @@ import javax.swing.text.html.HTML;
 
 public class ViewBMI extends JFrame {
 
+	// All panels and buttons.
 	JPanel pTitle = new JPanel();
 	JPanel pGender = new JPanel();
 	JPanel pHeight = new JPanel();
@@ -30,18 +31,21 @@ public class ViewBMI extends JFrame {
 
 
 	public ViewBMI() {
-
+		/*
+		 * Titles
+		 */
 		super("BMI Calculation");
 
 		JLabel title = new JLabel("<HTML><U>BMI CALCULATOR  </U></HTML>");
-		//pTitle.setBackground(Color.red);
 		title.setForeground(Color.DARK_GRAY);
 		title.setHorizontalAlignment(JLabel.CENTER);
 		title.setFont(new Font("ariel", Font.BOLD, 18));
 		pTitle.setBounds(20,10,450,50);
 		pTitle.add(title);
 
-
+		/*
+		 * Gender Panel, with raio buttons
+		 */
 		pGender.setBounds(5,50,195,30);
 		ButtonGroup buttonGroup1 = new ButtonGroup();
 		male = new JRadioButton("male");
@@ -52,9 +56,10 @@ public class ViewBMI extends JFrame {
 		pGender.add(new JLabel("<HTML><U>Gender:</U></HTML>  "));
 		pGender.add(male);
 		pGender.add(female);
-
+		/*
+		 * Height Panel, with a slider
+		 */	
 		pHeight.setBounds(5,90,270,80);
-		// pHeight.setBackground(Color.green);
 		slider = new JSlider();
 		heightL = new JLabel("");
 		slider.setMajorTickSpacing(50);
@@ -68,7 +73,9 @@ public class ViewBMI extends JFrame {
 		pHeight.add(new JLabel("<HTML><U>Height:</U></HTML> "));
 		pHeight.add(slider);
 		pHeight.add(heightL);
-
+		/*
+		 * Body Frame Panel. 
+		 */	
 		pBody.setBounds(5,160,280,30);
 		// pBody.setBackground(Color.blue);
 		JLabel bodyFrame = new JLabel("<HTML><U>Body Frame:</U></HTML> ");
@@ -84,7 +91,9 @@ public class ViewBMI extends JFrame {
 		pBody.add(small);
 		pBody.add(medium);
 		pBody.add(large);
-
+		/*
+		 * Weight Panel
+		 */
 		pWeight.setBounds(5,210,200,30);
 		JLabel lWeight1 = new JLabel("<HTML><U>Actual Weight:</U></HTML> ");
 		weight = new JTextField("       ");
@@ -94,16 +103,18 @@ public class ViewBMI extends JFrame {
 		pWeight.add(lWeight1);
 		pWeight.add(weight);
 		pWeight.add(lWeight2);
-
-
+		/*
+		 * Age Panel, text field
+		 */
 		pAge.setBounds(5,255,70,30);
 		JLabel LAge = new JLabel("<HTML><U>Age:</U></HTML> ");
 		age = new JTextField("        ");
 		weight.selectAll();
 		pAge.add(LAge);
 		pAge.add(age);
-
-
+		/*
+		 * Exercise Panel. 
+		 */
 		pExe.setBounds(0,285,450,30);
 		JLabel JExe = new JLabel("<HTML><U>Physical Activity:</U></HTML> ");
 		ButtonGroup buttonGroup3 = new ButtonGroup();
@@ -117,8 +128,10 @@ public class ViewBMI extends JFrame {
 		pExe.add(Inactive);
 		pExe.add(Moderately);
 		pExe.add(Extremely);
-		
-		
+
+		/*
+		 * Adding all Panels into the frame.		
+		 */
 		this.getContentPane().add(pTitle);
 		this.getContentPane().add(pGender);
 		this.getContentPane().add(pHeight);
@@ -132,13 +145,17 @@ public class ViewBMI extends JFrame {
 		setVisible(true); 
 	}
 
-	private class SliderListener implements ChangeListener {//listener for the slider1.
+
+	/*
+	 * changeListener for the slider
+	 */
+	private class SliderListener implements ChangeListener {
 
 		public void stateChanged (ChangeEvent event) {
 			//MVC.setHeight(slider.getValue());//send height selected to MVC.
-			heightL.setText("Your Height: "+slider.getValue()+" cm");//set text appear near the slider.
+			heightL.setText("Your Height: "+slider.getValue()+" cm"); //set text appear next to the slider.
 
-		}//end method
+		}
 
-	}//end slideListener
+	}
 }
