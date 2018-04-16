@@ -42,13 +42,6 @@ public class ViewBMI extends JFrame {
 		 */
 		super("BMI Calculation");
 
-		/*try {
-			this.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("///C:/Users/Dganit%20Uzan/git/BMIGui/BMIGui/src/BMI%20background.jpg")))));	
-		}
-		catch(IOException e) {
-			System.out.println("no image found");
-	}*/
-
 		JLabel title = new JLabel("<HTML><U>BMI CALCULATOR  </U></HTML>");
 		title.setForeground(Color.DARK_GRAY);
 		title.setHorizontalAlignment(JLabel.CENTER);
@@ -179,5 +172,43 @@ public class ViewBMI extends JFrame {
 		}
 
 	}
+	
+	public String getGender() {
+		String gender="";
+		if(male.isSelected())
+			gender = "male";
+		else if(female.isSelected())
+			gender ="female";
+		return gender;
+	}
+	public int getHeight() {
+		return slider.getValue();
+	}
+	public double getWeight() {
+		String gweight =weight.getText() ;
+		gweight= gweight.replaceAll("\\s+","");
+		double dweight = Double.valueOf(gweight).doubleValue();
+		return dweight;
+	}
+	public double getAge() {
+		String gAge =age.getText() ;
+		gAge= gAge.replaceAll("\\s+","");
+		double dAge = Double.valueOf(gAge).doubleValue();
+		return dAge;
+	}
+	public String getActivity() {
+		String act="";
+		if(Inactive.isSelected())
+			act = "Inactive";
+		else if(Moderately.isSelected())
+			act ="Moderately Active";
+		else if(Extremely.isSelected())
+			act ="Extremely Active";
+		return act;
+	}
+	
+	
+	
+	
 
 }
