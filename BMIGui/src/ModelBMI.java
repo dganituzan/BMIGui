@@ -11,20 +11,19 @@ public class ModelBMI {
 	}
 
 	public String calculateStatus() {
-		String status="";
 		if(bmi<=15.0)
-			status = "Anorexic";
+			this.weightStatus = "Anorexic";
 		else if(bmi>15.0 && bmi <=18.5) 
-			status ="Underweight";
+			this.weightStatus ="Underweight";
 		else if(bmi>18.5 && bmi <=24.9)
-			status ="Normal";
+			this.weightStatus ="Normal";
 		else if(bmi>=25.0 && bmi <=29.9)
-			status = "Overweight";
+			this.weightStatus = "Overweight";
 		else if(bmi>=30.0 && bmi <=35)
-			status = "Obese";
+			this.weightStatus = "Obese";
 		else if(bmi>35)
-			status = "Extreme Obese";
-		return status;
+			this.weightStatus = "Extreme Obese";
+		return this.weightStatus;
 	}
 
 	public double EER(String gender,double age, double weight, double height, String PA) {
