@@ -5,3 +5,10 @@
 /BMI background.jpg
 /ModelBMI.class
 /ControlBMI.class
+/ViewBMI$CalculationListener.class
+/resultPanel.class
+/ResultPanel$CalculationListener.class
+/ResultPanel.class
+/View.class
+/View$SliderListener.class
+/ControlBMI$CalculationListener.class

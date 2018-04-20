@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.*;
-import java.awt.*;
+import java.awt.*;	
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -19,7 +19,11 @@ public class ViewBMI extends JFrame {
 	JPanel pWeight = new JPanel();
 	JPanel pAge = new JPanel(); 
 	JPanel pExe = new JPanel();
-	JPanel pCal = new JPanel();
+	//JPanel pCal = new JPanel();
+	ResultPanel result = new ResultPanel();
+	ButtonGroup buttonGroup1;
+	ButtonGroup buttonGroup2;
+	ButtonGroup buttonGroup3;
 	JRadioButton female;
 	JRadioButton male;
 	JLabel heightL;
@@ -42,6 +46,7 @@ public class ViewBMI extends JFrame {
 		 */
 		super("BMI Calculation");
 
+
 		JLabel title = new JLabel("<HTML><U>BMI CALCULATOR  </U></HTML>");
 		title.setForeground(Color.DARK_GRAY);
 		title.setHorizontalAlignment(JLabel.CENTER);
@@ -53,7 +58,7 @@ public class ViewBMI extends JFrame {
 		 * Gender Panel, with raio buttons
 		 */
 		pGender.setBounds(5,50,195,30);
-		ButtonGroup buttonGroup1 = new ButtonGroup();
+		buttonGroup1 = new ButtonGroup();
 		male = new JRadioButton("male");
 		female = new JRadioButton("Female");
 		buttonGroup1.add(male);
@@ -85,7 +90,7 @@ public class ViewBMI extends JFrame {
 		pBody.setBounds(5,160,280,30);
 		// pBody.setBackground(Color.blue);
 		JLabel bodyFrame = new JLabel("<HTML><U>Body Frame:</U></HTML> ");
-		ButtonGroup buttonGroup2 = new ButtonGroup();
+		buttonGroup2 = new ButtonGroup();
 		small = new JRadioButton("small");
 		medium = new JRadioButton("medium");
 		large = new JRadioButton("large");
@@ -123,7 +128,7 @@ public class ViewBMI extends JFrame {
 		 */
 		pExe.setBounds(0,285,450,30);
 		JLabel JExe = new JLabel("<HTML><U>Physical Activity:</U></HTML> ");
-		ButtonGroup buttonGroup3 = new ButtonGroup();
+		buttonGroup3 = new ButtonGroup();
 		Inactive = new JRadioButton("Inactive");
 		Moderately =  new JRadioButton("Moderately Active");
 		Extremely =  new JRadioButton("Extremely Active");
@@ -134,17 +139,11 @@ public class ViewBMI extends JFrame {
 		pExe.add(Inactive);
 		pExe.add(Moderately);
 		pExe.add(Extremely);
-		/*
-		 * Calculate Button.		
-		 */
-		pCal.setBounds(0,380,450,40);
-		JButton calculateB = new JButton("Calculate");
-		pCal.add(calculateB);
-
 
 		/*
 		 * Adding all Panels into the frame.		
 		 */
+
 		this.getContentPane().add(pTitle);
 		this.getContentPane().add(pGender);
 		this.getContentPane().add(pHeight);
@@ -152,7 +151,8 @@ public class ViewBMI extends JFrame {
 		this.getContentPane().add(pWeight);
 		this.getContentPane().add(pAge);
 		this.getContentPane().add(pExe);
-		this.getContentPane().add(pCal);
+		//this.getContentPane().add(pCal);
+		this.getContentPane().add(result);
 		setLayout(null);
 		setSize(500,600);
 		setResizable(true);
@@ -172,29 +172,39 @@ public class ViewBMI extends JFrame {
 		}
 
 	}
-	
+
 	public String getGender() {
+
 		String gender="";
 		if(male.isSelected())
-			gender = "male";
+			gender = male.getText();
 		else if(female.isSelected())
-			gender ="female";
+			gender = female.getText();
 		return gender;
 	}
-	public int getHeight() {
-		return slider.getValue();
+
+	public double getHeightBMI() {
+		double height = (double)this.slider.getValue();
+		System.out.println(height);
+		return height;
 	}
 	public double getWeight() {
-		String gweight =weight.getText() ;
-		gweight= gweight.replaceAll("\\s+","");
-		double dweight = Double.valueOf(gweight).doubleValue();
-		return dweight;
+		String temp = this.weight.getText().replaceAll("\\s+",""); 
+		if(temp.isEmpty()) 
+			return 0.0;
+		else {
+			double weightB = Double.valueOf(temp);
+			return weightB;
+		}
 	}
 	public double getAge() {
-		String gAge =age.getText() ;
-		gAge= gAge.replaceAll("\\s+","");
-		double dAge = Double.valueOf(gAge).doubleValue();
-		return dAge;
+		String temp = this.age.getText().replaceAll("\\s+",""); 
+		if(temp.isEmpty()) 
+			return 0.0;
+		else {
+			double dAge = Double.valueOf(temp);
+			return dAge;
+		}
 	}
 	public String getActivity() {
 		String act="";
@@ -206,9 +216,5 @@ public class ViewBMI extends JFrame {
 			act ="Extremely Active";
 		return act;
 	}
-	
-	
-	
-	
 
 }

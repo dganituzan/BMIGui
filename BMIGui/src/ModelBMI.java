@@ -1,9 +1,11 @@
 
 public class ModelBMI {
 
-	private double bmi=0;
+	protected double bmi=0;
 	private String weightStatus;
 	private double EERMale, EERFemale;
+
+	public ModelBMI() {}
 
 	public double calculateBMI(double weight, double height) {
 		this.bmi = 1.3*weight/(Math.pow(height, 2.5));
@@ -26,9 +28,10 @@ public class ModelBMI {
 		return this.weightStatus;
 	}
 
-	public double EER(String gender,double age, double weight, double height, String PA) {
+	public double getEER(String gender,double age, double weight, double height, String PA) {
 
 		double intPA=0;
+
 		if(PA.equals("Inactive"))
 			intPA = 1.0;
 		else if(PA.equals("Moderately Active" ))
