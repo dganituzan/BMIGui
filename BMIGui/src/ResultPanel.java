@@ -8,13 +8,14 @@ import java.awt.event.ActionListener;
 
 public class ResultPanel extends JPanel {
 	
-	JLabel calculate = new JLabel("hey");
+	JLabel calculate = new JLabel();
 	ControlBMI control;
-	JLabel EERLab = new JLabel("hello");
+	JLabel EERLab = new JLabel();
 	String bmi;
 	JButton calculateB;
 	
 	public ResultPanel() {
+		
 		/*
 		 * Calculate Button.		
 		 */
@@ -23,8 +24,8 @@ public class ResultPanel extends JPanel {
 		
 		calculateB = new JButton("Calculate");
 		calculateB.setBounds(190, 4, 100, 30);
-		calculate.setBounds(180,25,250,70);
-		EERLab.setBounds(180,50,250,70);
+		calculate.setBounds(180,25,400,100);
+		EERLab.setBounds(180,80,400,100);
 		
 		add(calculateB);
 		add(calculate);
@@ -35,17 +36,21 @@ public class ResultPanel extends JPanel {
 	
 	void addCalculationListener(ActionListener listenerforCalc) {
 		
-		System.out.println("listener1");
+		
 		calculateB.addActionListener(listenerforCalc);
 		
 	}
 	
 	public void setLabels(String newBMI, String EER, String status) {
 		
-		System.out.println("listener");
-		calculate.setText("Your BMI is" + newBMI + "/n You are "+status);
+	
+		calculate.setText("Your BMI is " + newBMI + " You are "+status);
 		EERLab.setText("Estimated Energy Requirements is: " +EER);
 		
+	}
+	
+	public JButton getResultButton() {
+		return calculateB;
 	}
 	
 	

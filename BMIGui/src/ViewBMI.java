@@ -206,6 +206,10 @@ public class ViewBMI extends JFrame {
 			return dAge;
 		}
 	}
+	public ResultPanel getResult()
+	{
+		return result;
+	}
 	public String getActivity() {
 		String act="";
 		if(Inactive.isSelected())

@@ -7,9 +7,8 @@ public class Main {
 		
 		ViewBMI view = new ViewBMI();
 		ModelBMI model = new ModelBMI();
-		ResultPanel result = new ResultPanel();
 		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		ControlBMI co = new ControlBMI(view,model,result);
+		ControlBMI co = new ControlBMI(view,model,view.getResult());
 		
 	}
 
