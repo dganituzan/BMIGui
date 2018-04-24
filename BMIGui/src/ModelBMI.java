@@ -1,15 +1,16 @@
 
 public class ModelBMI {
 
-	protected double bmi=0;
+	protected double bmi;
 	private String weightStatus;
 	private double EERMale, EERFemale;
 
 	public ModelBMI() {}
 
 	public double calculateBMI(double weight, double height) {
-		this.bmi = 1.3*weight/(Math.pow(height, 2.5));
-		return this.bmi;	
+		this.bmi = (1.3*weight);
+		this.bmi /= (Math.pow(2.5, height/100));
+		return this.bmi;
 	}
 
 	public String calculateStatus() {
@@ -38,14 +39,16 @@ public class ModelBMI {
 			intPA =1.27;
 		else if(PA.equals("Extremely Active" ))	
 			intPA =1.45;
-
 		if(gender.equals("male")) {
-			this.EERMale = (662 - (9.53 * age)) + (intPA * ((15.91 * weight) + (539.6 * height)));
+			this.EERMale = (662 - (9.53 * age)) + (intPA * ((15.91 * weight) + (539.6 * height/100)));
 			return EERMale;
 		}
-		else {
-			this.EERFemale = (354 - (6.91 * age)) + (intPA * ((9.36 * weight) + (726 * height)));
+		else if (gender.equals("female")){
+			this.EERFemale = (354 - (6.91 * age)) + (intPA * ((9.36 * weight) + (726 * height/100)));
 			return EERFemale;
 		}
+		else 
+			return 0.0;
+		
 	}
 }

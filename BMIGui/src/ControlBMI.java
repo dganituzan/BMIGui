@@ -20,10 +20,9 @@ public class ControlBMI {
 			@Override
 			public void actionPerformed(ActionEvent event) {
 
-
 				// TODO Auto-generated method stub
-				result.setLabels(Double.toString(getBMI()), Double.toString(getEER()), getWeightStatus());
-
+				result.setLabels(String.format("%.2f",getBMI()), String.format("%.2f",getEER()), getWeightStatus());
+				
 			}
 		});
 	}
@@ -55,13 +54,14 @@ public class ControlBMI {
 	}
 
 	public double getEER() {
+
 		String gender = view.getGender();
 		double age = view.getAge();
 		double weight = view.getWeight();
 		double height = (double)view.getHeight();
 		String PA = view.getActivity();
 		this.EER = model.getEER(gender, age, weight, height, PA);
-		System.out.println(this.EER);
+	
 		return this.EER;
 	}
 

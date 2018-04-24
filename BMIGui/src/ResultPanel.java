@@ -24,8 +24,8 @@ public class ResultPanel extends JPanel {
 		
 		calculateB = new JButton("Calculate");
 		calculateB.setBounds(190, 4, 100, 30);
-		calculate.setBounds(180,25,400,100);
-		EERLab.setBounds(180,80,400,100);
+		calculate.setBounds(100,25,400,100);
+		EERLab.setBounds(100,50,400,100);
 		
 		add(calculateB);
 		add(calculate);
@@ -48,10 +48,5 @@ public class ResultPanel extends JPanel {
 		EERLab.setText("Estimated Energy Requirements is: " +EER);
 		
 	}
-	
-	public JButton getResultButton() {
-		return calculateB;
-	}
-	
 	
 }

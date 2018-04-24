@@ -2,7 +2,6 @@ import java.awt.Color;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.awt.*;	
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -60,7 +59,7 @@ public class ViewBMI extends JFrame {
 		pGender.setBounds(5,50,195,30);
 		buttonGroup1 = new ButtonGroup();
 		male = new JRadioButton("male");
-		female = new JRadioButton("Female");
+		female = new JRadioButton("female");
 		buttonGroup1.add(male);
 		buttonGroup1.add(female);
 
@@ -107,7 +106,7 @@ public class ViewBMI extends JFrame {
 		 */
 		pWeight.setBounds(5,210,200,30);
 		JLabel lWeight1 = new JLabel("<HTML><U>Actual Weight:</U></HTML> ");
-		weight = new JTextField("       ");
+		weight = new JTextField("          ");
 		weight.selectAll();
 		JLabel lWeight2 = new JLabel(" Kilogrames.");
 
@@ -126,7 +125,7 @@ public class ViewBMI extends JFrame {
 		/*
 		 * Exercise Panel. 
 		 */
-		pExe.setBounds(0,285,450,30);
+		pExe.setBounds(0,325,450,30);
 		JLabel JExe = new JLabel("<HTML><U>Physical Activity:</U></HTML> ");
 		buttonGroup3 = new ButtonGroup();
 		Inactive = new JRadioButton("Inactive");
@@ -185,26 +184,38 @@ public class ViewBMI extends JFrame {
 
 	public double getHeightBMI() {
 		double height = (double)this.slider.getValue();
-		System.out.println(height);
+
 		return height;
 	}
 	public double getWeight() {
 		String temp = this.weight.getText().replaceAll("\\s+",""); 
-		if(temp.isEmpty()) 
-			return 0.0;
-		else {
-			double weightB = Double.valueOf(temp);
-			return weightB;
+		try {
+			if(temp.isEmpty()) 
+				return 0.0;
+			else  {
+				double weightB = Double.valueOf(temp);
+				return weightB;
+			}
 		}
+		catch(IllegalArgumentException e) {
+			JOptionPane.showMessageDialog(this, "Weight must be a number!");
+		}
+		return 0.0;
 	}
 	public double getAge() {
 		String temp = this.age.getText().replaceAll("\\s+",""); 
+		try {
 		if(temp.isEmpty()) 
 			return 0.0;
 		else {
 			double dAge = Double.valueOf(temp);
 			return dAge;
 		}
+		}
+		catch(IllegalArgumentException e) {
+			JOptionPane.showMessageDialog(this, "Age must be a number!");
+		}
+		return 0.0;
 	}
 	public ResultPanel getResult()
 	{
