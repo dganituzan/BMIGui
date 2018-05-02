@@ -10,53 +10,48 @@ public class ControlBMI {
 	private ModelBMI model;
 	private ViewBMI view ;
 	private ResultPanel result;
-
+	/*
+	 * The controller is "merging" the model and the view.
+	 */
 	public ControlBMI (ViewBMI theView,ModelBMI theModel , ResultPanel result) {
 
 		this.view = theView;
 		this.model = theModel;
 		this.result = result;
-		
+		// adding the listener for the calculate button.
 		this.result.addCalculationListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent event) {
 
 				// TODO Auto-generated method stub
 				result.setLabels(String.format("%.2f",getBMI()), String.format("%.2f",getEER()), getWeightStatus());
-				
 			}
 		});
 	}
-
-	/*	class CalculationListener implements ActionListener{
-
-		@Override
-		public void actionPerformed(ActionEvent event) {
-
-			System.out.println("listener2");
-
-			// TODO Auto-generated method stub
-			result.setLabels(Double.toString(getBMI()), Double.toString(getEER()), getWeightStatus());
-
-		}
-
-	}*/
-	
+	/**
+	 * gets the weight and height from the view, according to the user input
+	 * @return updated BMI.
+	 */
 	public double getBMI() {
 		this.weight = view.getWeight();
 		double height= view.getHeightBMI();
 		this.finalBMI = model.calculateBMI(this.weight, height);
 		return this.finalBMI;
 	}
-
+	/**
+	 * @return weight status according to the user BMI
+	 */
 	public String getWeightStatus() {
 		this.weightStatus = model.calculateStatus();
 		return this.weightStatus;
 	}
-
+	/**
+	 * gets the the details from the user input: age,weight, height. PA
+	 * from the model
+	 * @return the eer of the user according to the model calculation
+	 */
 	public double getEER() {
-		
+
 		this.age = view.getAge();
 		String gender = view.getGender();
 		double height = view.getHeight();

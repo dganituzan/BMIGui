@@ -5,14 +5,24 @@ public class ModelBMI {
 	private String weightStatus;
 	private double EERMale, EERFemale;
 
+	/**
+	 * All the calculations for the bmi and eer
+	 */
 	public ModelBMI() {}
 
+	/**
+	 * @param weight
+	 * @param height
+	 * @return BMI
+	 */
 	public double calculateBMI(double weight, double height) {
 		this.bmi = (1.3*weight);
 		this.bmi /= (Math.pow(2.5, height/100));
 		return this.bmi;
 	}
-
+	/**
+	 * @return person status according to the BMI
+	 */
 	public String calculateStatus() {
 		if(bmi<=15.0)
 			this.weightStatus = "Anorexic";
@@ -28,7 +38,15 @@ public class ModelBMI {
 			this.weightStatus = "Extreme Obese";
 		return this.weightStatus;
 	}
-
+	/**
+	 * 
+	 * @param gender
+	 * @param age
+	 * @param weight
+	 * @param height
+	 * @param PA
+	 * @return EER 
+	 */
 	public double getEER(String gender,double age, double weight, double height, String PA) {
 
 		double intPA=0;
@@ -49,6 +67,6 @@ public class ModelBMI {
 		}
 		else 
 			return 0.0;
-		
+
 	}
 }

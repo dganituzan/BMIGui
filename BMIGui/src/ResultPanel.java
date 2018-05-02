@@ -1,5 +1,4 @@
-import java.awt.event.ActionEvent;
-import java.io.*;
+
 
 import javax.swing.*;
 
@@ -15,53 +14,56 @@ public class ResultPanel extends JPanel {
 
 
 	public ResultPanel() {
-
+		setBounds(0,380,700,220);
 		/*
 		 * Calculate Button.		
 		 */
-
-		setBounds(0,400,800,220);
-	//	this.setBackground(Color.BLACK);
 		calculateB = new JButton("Calculate BMI");
-		calculateB.setBounds(370, 15, 120, 20);
-
-		
-		calculateB.setHorizontalAlignment(JLabel.CENTER);
+		calculateB.setBounds(170, 0, 120, 20);
+		/*
+		 * result labels
+		 */
 		calculate.setFont(new Font("Ariel", Font.BOLD, 20));
 		EERLab.setFont(new Font("Ariel", Font.BOLD, 20));
-		calculate.setBounds(300,25,400,100);
-		EERLab.setBounds(300,50,400,100);
+		calculate.setBounds(110,25,400,100);
+		EERLab.setBounds(110,50,400,100);
 
 		setOpaque(false);
-	
+
 		add(calculateB);
 		add(calculate);
 		add(EERLab);
 
 		setLayout(null);
-
 	}
-
+	/*
+	 * gives the controller the control on the calculate button,
+	 * and let him to add an action listener.
+	 */
 	void addCalculationListener(ActionListener listenerforCalc) {
-
-
 		calculateB.addActionListener(listenerforCalc);
-
 	}
-
+	/**
+	 * changes the BMI results labels according to the user input 
+	 * @param newBMI
+	 * @param EER
+	 * @param status
+	 */
 	public void setLabels(String newBMI, String EER, String status) {
 
 		if(newBMI.equals("0.00") || EER.equals("0.00") || status.equals("")) {
-			JOptionPane.showMessageDialog(null, "some input is missing");
+			JOptionPane.showMessageDialog(null, "some input is missing! Please try again.");
 			calculate.setText("");
 			EERLab.setText("");
 		}
 		else {
-			calculate.setText("Your BMI is " + newBMI + " You are "+status);
-			EERLab.setText("Estimated Energy Requirements is: " +EER);
+			calculate.setText("Your BMI: " + newBMI + " You are "+status+"!");
+			EERLab.setText("Estimated energy requirements " +EER+".");
 		}
 	}
-	
+	/**
+	 * clear labels
+	 */
 	public void clearLabels() {
 		calculate.setText("");
 		EERLab.setText("");
