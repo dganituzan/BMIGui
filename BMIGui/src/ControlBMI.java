@@ -1,9 +1,11 @@
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JOptionPane;
+
 public class ControlBMI {
 
-	private double finalBMI, EER;
+	private double finalBMI, EER, age, weight;
 	private String weightStatus;
 	private ModelBMI model;
 	private ViewBMI view ;
@@ -40,11 +42,11 @@ public class ControlBMI {
 		}
 
 	}*/
-
+	
 	public double getBMI() {
+		this.weight = view.getWeight();
 		double height= view.getHeightBMI();
-		double weight = view.getWeight();
-		this.finalBMI = model.calculateBMI(weight, height);
+		this.finalBMI = model.calculateBMI(this.weight, height);
 		return this.finalBMI;
 	}
 
@@ -54,14 +56,15 @@ public class ControlBMI {
 	}
 
 	public double getEER() {
-
+		
+		this.age = view.getAge();
 		String gender = view.getGender();
-		double age = view.getAge();
-		double weight = view.getWeight();
-		double height = (double)view.getHeight();
+		double height = view.getHeight();
 		String PA = view.getActivity();
-		this.EER = model.getEER(gender, age, weight, height, PA);
-	
+		this.EER = model.getEER(gender, this.age, this.weight, height, PA);
+		if(PA.equals("") || height == 110.0 || gender.equals("") || age == 0.0) {
+			return 0.00;
+		}
 		return this.EER;
 	}
 

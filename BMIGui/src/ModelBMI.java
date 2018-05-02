@@ -35,7 +35,7 @@ public class ModelBMI {
 
 		if(PA.equals("Inactive"))
 			intPA = 1.0;
-		else if(PA.equals("Moderately Active" ))
+		else if(PA.equals("Moderately Active" ))  
 			intPA =1.27;
 		else if(PA.equals("Extremely Active" ))	
 			intPA =1.45;
