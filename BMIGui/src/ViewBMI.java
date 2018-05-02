@@ -56,13 +56,14 @@ public class ViewBMI extends JFrame {
 		title.setForeground(Color.DARK_GRAY);
 		title.setHorizontalAlignment(JLabel.CENTER);
 		title.setFont(new Font("ariel", Font.BOLD, 26));
-		icon = new ImageIcon("bmi.png");
-
-		JLabel iconLab = new JLabel(icon);
-		pTitle.setBounds(20,10,950,50);
+		icon = new ImageIcon("bmi2.jpg");
+		JLabel iconLab1 = new JLabel(icon);
+		JLabel iconLab2 = new JLabel(icon);
+		pTitle.setBounds(20,10,950,70);
 		pTitle.setOpaque(false);
+		pTitle.add(iconLab2);
 		pTitle.add(title);
-	//	pTitle.add(iconLab);
+		pTitle.add(iconLab1);
 
 		/*
 		 * Clear Button
@@ -153,7 +154,7 @@ public class ViewBMI extends JFrame {
 		lWeight1.setFont(new Font("ariel", 24,22));
 		weight = new JTextField(4);
 		weight.selectAll();
-		JLabel lWeight2 = new JLabel(" Kilogrames.");
+		JLabel lWeight2 = new JLabel(" Kilograms.");
 		lWeight2.setFont(new Font("ariel", 14,14));
 		pWeight.setOpaque(false);
 

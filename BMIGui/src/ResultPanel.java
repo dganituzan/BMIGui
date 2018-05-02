@@ -27,10 +27,10 @@ public class ResultPanel extends JPanel {
 
 		
 		calculateB.setHorizontalAlignment(JLabel.CENTER);
-		calculate.setFont(new Font("Ariel", Font.ITALIC, 20));
-		EERLab.setFont(new Font("Ariel", Font.ITALIC, 20));
-		calculate.setBounds(225,25,400,100);
-		EERLab.setBounds(225,50,400,100);
+		calculate.setFont(new Font("Ariel", Font.BOLD, 20));
+		EERLab.setFont(new Font("Ariel", Font.BOLD, 20));
+		calculate.setBounds(300,25,400,100);
+		EERLab.setBounds(300,50,400,100);
 
 		setOpaque(false);
 	
