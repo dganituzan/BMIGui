@@ -254,9 +254,7 @@ public class ViewBMI extends JFrame {
 				return weightB;
 			}
 		}
-		catch(IllegalArgumentException e) {
-			//JOptionPane.showMessageDialog(null, "Weight must be a number!");
-		}
+		catch(IllegalArgumentException e) {}
 		return 0.0;
 	}
 	//age
@@ -270,9 +268,7 @@ public class ViewBMI extends JFrame {
 				double dAge = Double.valueOf(temp);
 				return dAge;
 			}		}
-		catch(IllegalArgumentException e) {
-			//JOptionPane.showMessageDialog(null, "Age must be a number!");
-		}
+		catch(IllegalArgumentException e) {}
 		return 0.0;
 	}
 	//result panel
