@@ -80,7 +80,7 @@ public class ViewBMI extends JFrame {
 				buttonGroup3.clearSelection();
 				weight.setText("");
 				age.setText("");
-				slider.setValue(110);
+				slider.setValue(60);
 				lGen.setForeground(Color.BLACK);
 				JExe.setForeground(Color.BLACK);
 				LAge.setForeground(Color.BLACK);
