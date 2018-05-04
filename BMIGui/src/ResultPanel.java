@@ -52,7 +52,7 @@ public class ResultPanel extends JPanel {
 	public void setLabels(String newBMI, String EER, String status) {
 
 		if(newBMI.equals("0.00") || EER.equals("0.00") || status.equals("")) {
-			JOptionPane.showMessageDialog(null, "some input is missing! Please try again.");
+			JOptionPane.showMessageDialog(this, "Some input is invalid! Follow the red titels to see what is wrong.");
 			calculate.setText("");
 			EERLab.setText("");
 		}

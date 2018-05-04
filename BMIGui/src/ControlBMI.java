@@ -22,9 +22,10 @@ public class ControlBMI {
 		this.result.addCalculationListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent event) {
-
-				// TODO Auto-generated method stub
+				
 				result.setLabels(String.format("%.2f",getBMI()), String.format("%.2f",getEER()), getWeightStatus());
+				view.missInput();
+				view.noMiss();
 			}
 		});
 	}
@@ -57,7 +58,7 @@ public class ControlBMI {
 		double height = view.getHeight();
 		String PA = view.getActivity();
 		this.EER = model.getEER(gender, this.age, this.weight, height, PA);
-		if(PA.equals("") || height == 110.0 || gender.equals("") || age == 0.0) {
+		if(PA.equals("") || height < 50 || gender.equals("") || age == 0.0) {
 			return 0.00;
 		}
 		return this.EER;

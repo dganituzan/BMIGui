@@ -28,6 +28,10 @@ public class ViewBMI extends JFrame {
 	JRadioButton male;
 	JLabel heightL;
 	JLabel lGen;
+	JLabel JExe;
+	JLabel LAge;
+	JLabel lWeight1;
+	JLabel hl;
 	JSlider slider;
 	JRadioButton small;
 	JRadioButton  medium;
@@ -40,6 +44,7 @@ public class ViewBMI extends JFrame {
 	JLabel background;
 	JButton clearB;
 	ImageIcon icon;
+
 
 	public ViewBMI() {
 		super("BMI Calculation");
@@ -76,6 +81,10 @@ public class ViewBMI extends JFrame {
 				weight.setText("");
 				age.setText("");
 				slider.setValue(110);
+				lGen.setForeground(Color.BLACK);
+				JExe.setForeground(Color.BLACK);
+				LAge.setForeground(Color.BLACK);
+				lWeight1.setForeground(Color.BLACK);
 			}});
 		/*
 		 * Gender Panel, with radio buttons
@@ -93,6 +102,7 @@ public class ViewBMI extends JFrame {
 		lGen = new JLabel("<HTML><B>Gender:</B></HTML>");
 		lGen.setHorizontalAlignment(JLabel.CENTER);
 		lGen.setFont(new Font("ariel", 24,22));
+
 		pGender.add(lGen);
 		pGender.add(male);
 		pGender.add(female);
@@ -103,17 +113,18 @@ public class ViewBMI extends JFrame {
 		pHeight.setBounds(320,70,270,130);
 		slider = new JSlider();
 		slider.setOpaque(false);
-		heightL = new JLabel("");
+		heightL = new JLabel("Your Height: 60 cm");
 		slider.setMajorTickSpacing(50);
 		slider.setMinorTickSpacing(15);
-		slider.setValue(110);
 		slider.setPaintLabels(true);
-		slider.setMaximum(220);
+		slider.setMaximum(230);
+		slider.setMinimum(60);
 		slider.setPaintTicks(true);
 		slider.addChangeListener(new SliderListener());
 		pHeight.setOpaque(false);
-		JLabel hl = new JLabel("<HTML><B>Height:</B>    </HTML> ");
+		hl = new JLabel("<HTML><B>Height:</B>    </HTML> ");
 		hl.setFont(new Font("ariel", 24,22));
+
 		pHeight.add(hl);
 		pHeight.add(slider);
 		pHeight.add(heightL);
@@ -121,7 +132,7 @@ public class ViewBMI extends JFrame {
 		 * Weight Panel
 		 */
 		pWeight.setBounds(65,180,160,70);
-		JLabel lWeight1 = new JLabel("<HTML><B>Actual Weight:</B></HTML> ");
+		lWeight1 = new JLabel("<HTML><B>Actual Weight:</B></HTML> ");
 		lWeight1.setFont(new Font("ariel", 24,22));
 		weight = new JTextField(4);
 		weight.selectAll();
@@ -137,7 +148,7 @@ public class ViewBMI extends JFrame {
 		 */
 		pAge.setBounds(370,180,160,80);
 		pAge.setBackground(Color.BLACK);
-		JLabel LAge = new JLabel("<HTML><B>Age:</B></HTML> ");
+		LAge = new JLabel("<HTML><B>Age:</B></HTML> ");
 		LAge.setFont(new Font("ariel", 24,22));
 		JPanel textP = new JPanel();
 		age = new JTextField(4);
@@ -155,7 +166,7 @@ public class ViewBMI extends JFrame {
 		 * Exercise Panel. 
 		 */
 		pExe.setBounds(80,255,420,100);
-		JLabel JExe = new JLabel("<HTML><B>Physical Activity:</B></HTML> ");
+		JExe = new JLabel("<HTML><B>Physical Activity:</B></HTML> ");
 		JExe.setHorizontalAlignment(JLabel.CENTER);
 		JExe.setFont(new Font("ariel", 24,22));
 		JPanel buttonP = new JPanel();
@@ -244,7 +255,7 @@ public class ViewBMI extends JFrame {
 			}
 		}
 		catch(IllegalArgumentException e) {
-			JOptionPane.showMessageDialog(this, "Weight must be a number!");
+			JOptionPane.showMessageDialog(null, "Weight must be a number!");
 		}
 		return 0.0;
 	}
@@ -279,5 +290,19 @@ public class ViewBMI extends JFrame {
 		else if(Extremely.isSelected())
 			act ="Extremely Active";
 		return act;
+	}
+
+	public void missInput() {
+		if(getGender().equals("")) lGen.setForeground(Color.RED);
+		if(getActivity().equals("")) JExe.setForeground(Color.RED);
+		if(getAge()==0.0) LAge.setForeground(Color.RED);
+		if(getWeight()==0.0) lWeight1.setForeground(Color.RED);
+
+	}
+	public void noMiss() {
+		if(!getGender().equals(""))lGen.setForeground(Color.BLACK);
+		if(!getActivity().equals("")) 	JExe.setForeground(Color.BLACK);
+		if(!(getAge()==0.0)) 	LAge.setForeground(Color.BLACK);
+		if(!(getWeight()==0.0))lWeight1.setForeground(Color.BLACK);
 	}
 }
