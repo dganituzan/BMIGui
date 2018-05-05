@@ -1,5 +1,5 @@
 # BMIGui
-*** Assignment 3 - Buttons ***
+*** Assignment 4 - BMI Calculator ***
 
 *** Developers Information: ***
 
