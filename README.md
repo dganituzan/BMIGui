@@ -37,7 +37,7 @@ ControlBMI - The connection between the view and the model.
 
 ModelBMI - Where all the calculations executes.
 
-*Two another images for the background and the icon.
+*Two another images are attached for the background and the icon.
 
 *** Running The Program ***
 
