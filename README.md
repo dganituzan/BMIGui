@@ -15,15 +15,15 @@ Computer Science Department- Ashqelon Academic College
 
 *** Assignment: ***
 
-Build a GUI that calculates the user body's physical condition and his daily energy requirements according to the user details. 
+Build a GUI that calculates the user body's physical condition and his daily energy requirements according to the user details- weight of a person, while his gender, height, physique, etc. are known.
 
-The GUI will represent a designed and friendly BMI calculator while using the Model-View-Controller pattern.
+The GUI represents a designed and friendly BMI calculator while using the Model-View-Controller pattern.
 
 *** Goals ***
 
 Recognition with the MVC pattern and learning how to use it.
 
-Experience the design and graphics methods in JAVA. 
+Getting an experience of design and graphics methods in JAVA. 
 
 *** Classes ***
 
